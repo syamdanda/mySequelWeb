@@ -1,3 +1,59 @@
 <% layout('layout') -%>
-<h1>Bootstrap starter template</h1>
-<p>Hello World..!</p>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from accessing your MySql Database!</p>
+        </div>
+        <div class="col-md-9 register-right">
+            <div class="row register-form">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="host" placeholder="Host *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="userName" placeholder="User Name *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="dbName" placeholder="Database Name *" value="" />
+                    </div>                                
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="portNumber" placeholder="Port Number *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="autoConnect">
+                            <option class="hidden"  selected disabled>Auto Connect</option>
+                            <option>True</option>
+                            <option>False</option>
+                        </select>
+                    </div>
+                    <input type="submit" onclick="accessDatabase()" class="btnRegister"  value="Access Database"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+	function accessDatabase() {
+		var accessInfo = {
+			'host': $('#hostName').val(),
+			'portNumber': $('#portNumber').val(),
+			'userName': $('#userName').val(),
+			'password': $('#password').val(),
+			'dbName': $('#dbName').val(),
+			'autoConnect': $('#autoConnect').val()
+		};
+		
+		window.location.href='/home';
+	}
+
+
+</script>

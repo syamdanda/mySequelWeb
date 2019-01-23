@@ -6,4 +6,10 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'MySql Web' });
 });
 
+router.get('/home', function(req, res) {
+  res.render('home', { title: 'MySql Web' });
+});
+
+
+
 module.exports = router;

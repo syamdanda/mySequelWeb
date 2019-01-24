@@ -1,6 +1,4 @@
 var express = require('express');
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
 var engine = require('ejs-locals');
 var path = require('path');
 var favicon = require('serve-favicon');

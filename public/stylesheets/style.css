@@ -1,9 +1,25 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #f5f5f5;
-  padding: 10px;
+    position: fixed;
+    height: 7%;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+/*home page layout*/
+
+.contentLayout {
+   margin-top: 4%;
+   width: 98%;
+   margin-bottom: 1%;
+   margin-right: 0%;
+   margin-left: 1%;
+   border: 1px solid black;
+   height: 82vh; 
 }
 
 /*Db access form css */

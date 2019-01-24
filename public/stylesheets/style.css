@@ -22,6 +22,26 @@
    height: 82vh; 
 }
 
+.tablesLayout {
+    background-color: #b8daff;
+    height:100%;
+    border-style: 1px solid #b8daff;
+}
+
+.queryEditor {
+    background-color: #edf2f7;
+    height:48%;
+    margin: 1%;
+    border-style: 1px solid #edf2f7;
+}
+
+.queryResults {
+    background-color: #d6efdf;
+    height: 48%;
+    margin: 1%;
+    border-style: 1px solid #d6efdf;
+}
+
 /*Db access form css */
 .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);

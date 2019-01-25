@@ -45,3 +45,10 @@ function getTableInfo() {
 		}
 	});	
 }
+
+function submitQuery() {
+	query = $('.queryEditor').html();
+	reqHandler.post({url: '/execute', data: {'query': query}}, function(response) {
+		console.log(JSON.stringify(response, null, 2));
+	});
+}

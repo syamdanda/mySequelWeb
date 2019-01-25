@@ -61,6 +61,24 @@ router.get('/tableInfo/:tableName', function(req, res) {
 	});
 });
 
+router.post('/execute/', function(req, res) {
+	connection = mysql.createConnection(config);
+	connection.connect();
+	var queryObj = req.body;
+	query = queryObj.query.replace(';', '');
+	console.log('query ::: ', query);
+	connection.query(query, function (error, results, fields) {
+	  if (error) throw error;
+	  connection.end();
+	  var response = {
+	  	'title': 'MySql Web',
+	  	'status': 'SUCCESS',
+	  	'result': results
+	  };
+	  console.log(JSON.stringify(results, null, 2));
+	  res.json(response);
+	});
+});
 
 
 module.exports = router;

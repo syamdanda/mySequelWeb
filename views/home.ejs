@@ -11,8 +11,12 @@
 	</div>
 
 	<div class='col-md-10'>
-		<div class='queryEditor'>
+		<div class='queryEditor' contenteditable>
 			
+		</div>
+		<div style="padding: 1%; float: right; margin-top: -2%;">
+			<button type="button" id="cancleQuery" onclick="cancleQuery()" class="btn btn-xs" style="padding: 0%; margin: 0px 4px;">Cancel</button>
+			<button type="button" id="submitQuery" onclick="submitQuery()" class="btn btn-success btn-xs" style="padding: 0%; margin: 0px 4px;">Execute</button>
 		</div>
 
 		<div class='queryResults'>

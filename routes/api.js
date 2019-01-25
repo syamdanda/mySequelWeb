@@ -81,6 +81,10 @@ router.post('/home', function(req, res) {
 	res.render('home', response);
 });
 
+router.get('/tableInfo', function(req, res) {
+  res.render('index', { title: 'MySql Web' });
+});
+
 
 
 module.exports = router;

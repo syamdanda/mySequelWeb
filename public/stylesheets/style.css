@@ -53,6 +53,8 @@
     height: 68%;
     margin: 1%;
     border-style: 1px solid #d6efdf;
+    overflow: hidden;
+    width: 100%
 }
 
 .panel {
@@ -81,8 +83,14 @@
     padding: inherit !important;
 }
 
-#hot.handsontable table{
+#resultsGrid.handsontable table{
     width:100%;
+}
+
+.hot-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .pointerCls {
@@ -149,21 +157,6 @@
   float: left;
 }
 
-.cardView-body {
-    padding: 0px !important;
-    overflow: hidden;
-}
-.grid-container {
-    display: flex;
-}
-.grid-container .gridHeader {
-    background-color: #efefef;
-    color: #272727;
-}
-
-.grid-container > .handsontable {
-    flex: 3;
-}
 
 /*Db access form css */
 .register{

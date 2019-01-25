@@ -26,20 +26,143 @@
     background-color: #b8daff;
     height:100%;
     border-style: 1px solid #b8daff;
+    overflow: scroll;
+}
+
+.tablesList {
+    width: 115%;
+    margin-left: -8%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.tableHeading {
+    margin-left: 10%;
+    color: darkslategrey;
 }
 
 .queryEditor {
     background-color: #edf2f7;
-    height:48%;
+    height:30%;
     margin: 1%;
     border-style: 1px solid #edf2f7;
 }
 
 .queryResults {
     background-color: #d6efdf;
-    height: 48%;
+    height: 68%;
     margin: 1%;
     border-style: 1px solid #d6efdf;
+}
+
+.panel {
+    border: 0px !important;
+}
+
+.panel-body {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.currentRow {
+  background-color: #008080 !important;
+  color: #fcf8e3;
+}
+
+.currentRow .rowHeader {
+  color: #008080;
+}
+
+.currentCol {
+  background-color: #bbb3b3 !important;
+}
+
+.cardViewItem {
+    padding: inherit !important;
+}
+
+#hot.handsontable table{
+    width:100%;
+}
+
+.pointerCls {
+  cursor: pointer;
+}
+
+.disableButton {
+    cursor: default;
+    pointer-events: none;
+    color: #c0c0c0;
+    background-color: #ffffff;
+}
+
+.success {
+    display: none;
+}
+
+.failure {
+    display: none;
+}
+
+.warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    display: none;
+}
+
+.errMsg {
+  color: red;
+}
+
+.submitButton {
+    background: #008080;
+    color: #fcf8e3;
+    font-weight: bold;
+    border: none;
+    margin: 20px auto 0;
+    /*display: block;*/
+    height: 38px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.cancelButton {
+    background: #e3e3e3;
+    color: #008080;
+    font-weight: bold;
+    border: none;
+    margin: 20px auto 0;
+    /*display: block;*/
+    height: 38px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.rightAlign {
+  float: right;
+}
+
+.leftAlign {
+  float: left;
+}
+
+.cardView-body {
+    padding: 0px !important;
+    overflow: hidden;
+}
+.grid-container {
+    display: flex;
+}
+.grid-container .gridHeader {
+    background-color: #efefef;
+    color: #272727;
+}
+
+.grid-container > .handsontable {
+    flex: 3;
 }
 
 /*Db access form css */

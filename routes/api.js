@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var _ = require('underscore');
 var query;
 var config = {
   'host': '',
@@ -24,21 +25,28 @@ router.post('/home', function(req, res) {
 	config.user = req.body.userName;
 	config.password = req.body.password;
 	config.database = req.body.dbName;
-	console.log(req.body);
-	console.log(JSON.stringify(config, null, 2));
 	connection = mysql.createConnection(config);
 	connection.connect();
 	
 	connection.query("SELECT table_name FROM information_schema.tables where table_schema='"+ config.database +"'", function (error, results, fields) {
-	  if (error) throw error;
-	  console.log(JSON.stringify(results, null, 2));
 	  connection.end();
-	  var response = {
-	  	'title': 'MySql Web',
-	  	'status': 'SUCCESS',
-	  	'result': results
-	  };
-	  res.render('home', response);
+	  if (error) {
+	  	console.log('errors exists');
+	  	var response = {
+	  		'title': 'MySql Web',
+	  		'status': 'ERROR',
+	  		'error': error
+	  	};
+	  	console.log(JSON.stringify(error, null, 2));
+	  	res.json(response);
+	  } else {
+	  	var response = {
+	  		'title': 'MySql Web',
+	  		'status': 'SUCCESS',
+	  		'result': results
+	  	};
+	  	res.render('home', response);
+	  }	  
 	});
 });
 
@@ -48,16 +56,25 @@ router.get('/tableInfo/:tableName', function(req, res) {
 	query = "SELECT COLUMN_NAME, ORDINAL_POSITION FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + config.database + "' AND TABLE_NAME ='" + req.params.tableName + "'";
 	console.log('query ::: ', query);
 	connection.query(query, function (error, results, fields) {
-	  if (error) throw error;
-	  console.log(JSON.stringify(results, null, 2));
-	  connection.end();
-	  var response = {
-	  	'title': 'MySql Web',
-	  	'status': 'SUCCESS',
-	  	'result': results
-	  };
-	  console.log(JSON.stringify(results, null, 2));
-	  res.json(response);
+		connection.end();
+		if (error) {
+			console.log('errors exists');
+			var response = {
+				'title': 'MySql Web',
+				'status': 'ERROR',
+				'error': error
+			};
+			console.log(JSON.stringify(error, null, 2));
+			res.json(response);
+		} else { 
+			var response = {
+				'title': 'MySql Web',
+				'status': 'SUCCESS',
+				'result': results
+			};
+			//console.log(JSON.stringify(results, null, 2));
+			res.json(response);
+		}	  
 	});
 });
 
@@ -68,15 +85,26 @@ router.post('/execute/', function(req, res) {
 	query = queryObj.query.replace(';', '');
 	console.log('query ::: ', query);
 	connection.query(query, function (error, results, fields) {
-	  if (error) throw error;
-	  connection.end();
-	  var response = {
-	  	'title': 'MySql Web',
-	  	'status': 'SUCCESS',
-	  	'result': results
-	  };
-	  console.log(JSON.stringify(results, null, 2));
-	  res.json(response);
+		connection.end();
+		if (error)  {
+			console.log('errors exists');
+			var response = {
+				'title': 'MySql Web',
+				'status': 'ERROR',
+				'error': error
+			};
+			console.log(JSON.stringify(error, null, 2));
+			res.json(response);
+		} else {
+			var response = {
+				'title': 'MySql Web',
+				'status': 'SUCCESS',
+				'fields': _.pluck(fields, 'name'),
+				'result': results
+			};
+			//console.log(JSON.stringify(results, null, 2));
+			res.json(response);
+		}		
 	});
 });
 

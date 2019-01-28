@@ -58,7 +58,7 @@
     height: 68%;
     margin: 1%;
     border-style: 1px solid #d6efdf;
-    overflow: hidden;
+    overflow-x: auto;
     width: 100%
 }
 

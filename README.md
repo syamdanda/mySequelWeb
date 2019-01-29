@@ -8,13 +8,13 @@ We do not save or store any of your connection strings or data. Every thing rela
 Demo
 =================
 Run the app.js file from your cmd prompt<br />
-     mySequelWeb>node app.js<br />Then navigate to http://localhost:1234 url by opening your favorite browser.
+     mySequelWeb>node app.js<br />Then navigate to http://localhost:1234 url by opening your favorite browser.<br /><br />
       <img src="/screenshots/1.PNG" alt="img 1"/>
       <br/><br/>
   Except autoconnection field all are mandatory. Please provide your conection string details and click on Access Database<br />
-  You will get connected with the MySql database and you can see the list tables available in that database.
+  You will get connected with the MySql database and you can see the list tables available in that database.<br /><br />
     <img src="/screenshots/3.PNG" alt="img 2"/> <br/><br/>
-  Write queries in the query editor and click on execute button, your query results will appear in the results grid.
+  Write queries in the query editor and click on execute button, your query results will appear in the results grid.<br /><br />
     <img src="/screenshots/2.PNG" alt="img 3"/> <br/><br/>
 
 

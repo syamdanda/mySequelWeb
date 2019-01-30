@@ -70,7 +70,7 @@ app.listen(app_port, app_host, function (){
         console.error('Error starting mySequelWeb: Port ' + app_port + ' already in use, choose another');
     }else{
         console.error('Error starting mySequelWeb: ' + err);
-        app.emit('errorAdminMongo');
+        app.emit('errorMySequelWeb');
     }
 });
 

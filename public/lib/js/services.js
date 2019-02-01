@@ -289,6 +289,32 @@ function updateQuery() {
 	}
 }
 
+function deleteQuery() {
+	if (selectedTable) {
+		reqHandler.get({url: '/tableInfo/' + selectedTable}, function(response) {
+			console.log(JSON.stringify(response, null, 2));
+			if (response && response.result && response.result.length) {
+				
+				var querySnippet = 'DELETE FROM ' + selectedTable + ' WHERE  ' + response.result[0].COLUMN_NAME + ' = ? ';				
+				$('.queryEditor').html(querySnippet);
+				$('#msgSpan').addClass('success');
+				$('#msgSpan').html('insert query snippet placed successfully.');
+				$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+				
+			} else {
+				$('#msgSpan').addClass('failure');
+				$('#msgSpan').html('Failed to retrieve table information');
+				$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+			}
+		});
+
+	} else {
+		$('#msgSpan').addClass('warning');
+		$('#msgSpan').html('Please select a table first');
+		$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+	}
+}
+
 /* Utility functions */
 
 function getQuestionMarks(noOfChars) {

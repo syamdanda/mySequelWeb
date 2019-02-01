@@ -62,7 +62,6 @@ function submitQuery() {
 	query = $('.queryEditor').html();
 	reqHandler.post({url: '/execute', data: {'query': query }}, function(response) {
 		console.log(JSON.stringify(response, null, 2));
-		var queryType = query.firstWord();
 		if ('SUCCESS' == response.status) {
 			if (response.result instanceof Array) {
 				if (response.result && response.result.length) {
@@ -216,6 +215,55 @@ function selectQuery() {
 	}
 }
 
+function insertQuery() {
+	if (selectedTable) {
+		reqHandler.get({url: '/tableInfo/' + selectedTable}, function(response) {
+			console.log(JSON.stringify(response, null, 2));
+			if (response && response.result && response.result.length) {
+				var querySnippet = 'INSERT INTO ' + selectedTable + ' (';
+				var lastIndex = response.result.length;
+				for (i=0;i<lastIndex;i++) {
+					var colName =response.result[i].COLUMN_NAME;
+					if (i==0) {
+						querySnippet = querySnippet + ' ' + colName;
+					} else {
+						querySnippet = querySnippet + ', ' + colName;
+					}
+					
+					if (i == lastIndex - 1) {						
+						querySnippet = querySnippet + ' VALUES (' + getQuestionMarks(response.result.length) + ' )';
+						$('.queryEditor').html(querySnippet);
+						$('#msgSpan').addClass('success');
+						$('#msgSpan').html('insert query snippet placed successfully.');
+						$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+					}
+				}
+			} else {
+				$('#msgSpan').addClass('failure');
+				$('#msgSpan').html('Failed to retrieve table information');
+				$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+			}
+		});
+
+	} else {
+		$('#msgSpan').addClass('warning');
+		$('#msgSpan').html('Please select a table first');
+		$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+	}
+}
+
 /* Utility functions */
 
-String.prototype.firstWord = function(){return this.replace(/\s.*/,'')}
+function getQuestionMarks(noOfChars) {
+	var returnString = '';
+	for (i=0; i<noOfChars; i++) {
+		if (i==0) {
+			returnString = returnString + '?';
+		} else {
+			returnString = returnString + ', ?';
+		}
+		if (i == noOfChars-1) {
+			return returnString;
+		}
+	}
+}

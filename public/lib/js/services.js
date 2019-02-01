@@ -1,6 +1,7 @@
 var selectedTable;
 var query;
 const reqHandler = new ReqHandler();
+var hotGrid;
 
 function selectTable(tableName) {
 	$('.tablesList li').removeClass('active');
@@ -22,7 +23,7 @@ function getTableInfo() {
 			var lastIndex = response.result.length;
 			for (i=0;i<lastIndex;i++) {
 				var colName =response.result[i].COLUMN_NAME;
-				columnsObject.push({data: colName, type: 'text', className: 'htRight'});
+				columnsObject.push({data: colName, type: 'text', className: 'htRight', readOnly: true});
 				colHeaders.push(colName);
 				colWidths.push(colName.length * 11);
 				if (i == lastIndex - 1) {
@@ -38,7 +39,7 @@ function getTableInfo() {
 						'manualColumnResize': true,
 						'colWidths': colWidths
 					};
-					var hot = new Handsontable(hotElement, hotSettings);
+					hotGrid = new Handsontable(hotElement, hotSettings);
 				}
 			}
 		}
@@ -47,7 +48,7 @@ function getTableInfo() {
 
 function loadResultsGrid(hotSettings) {
 	var hotElement = document.querySelector('#resultsGrid');
-	var hot = new Handsontable(hotElement, hotSettings);
+	hotGrid = new Handsontable(hotElement, hotSettings);
 }
 
 function submitQuery() {
@@ -64,7 +65,7 @@ function submitQuery() {
 					var colWidths = [];
 					var lastIndex = colHeaders.length;
 					for (i=0;i<lastIndex;i++) {
-						columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft'});
+						columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft', readOnly: true});
 						if (i == lastIndex - 1) {
 							var hotSettings = {
 								'data': response.result,
@@ -87,7 +88,7 @@ function submitQuery() {
 					var colWidths = [];
 					var lastIndex = colHeaders.length;
 					for (i=0;i<lastIndex;i++) {
-						columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft'});
+						columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft', readOnly: true});
 						if (i == lastIndex - 1) {
 							var hotSettings = {
 								'data': response.result,
@@ -111,7 +112,7 @@ function submitQuery() {
 				var colWidths = [];
 				var lastIndex = colHeaders.length;
 				for (i=0;i<lastIndex;i++) {
-					columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft'});
+					columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft', readOnly: true});
 					if (i == lastIndex - 1) {
 						var hotSettings = {
 							'data': [response.result],
@@ -134,7 +135,7 @@ function submitQuery() {
 			var colHeaders = _.keys(response.error);
 			var lastIndex = colHeaders.length;
 			for (i=0;i<lastIndex;i++) {
-				columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft'});
+				columnsObject.push({data: colHeaders[i], type: 'text', className: 'htLeft', readOnly: true});
 				if (i == lastIndex - 1) {
 					var hotSettings = {
 						'data': [response.error],

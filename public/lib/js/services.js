@@ -175,6 +175,10 @@ function submitQuery() {
 }
 
 
+function cancleQuery() {
+	$('.queryEditor').html('');
+}
+
 function insertQuery() {
 
 }

@@ -40,6 +40,9 @@ function getTableInfo() {
 						'colWidths': colWidths
 					};
 					hotGrid = new Handsontable(hotElement, hotSettings);
+					$('#msgSpan').addClass('success');
+					$('#msgSpan').html('Table information retrieved successfully.');
+					$("#msgSpan").fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
 				}
 			}
 		}
@@ -155,6 +158,10 @@ function submitQuery() {
 	});
 }
 
+
+function insertQuery() {
+
+}
 
 /* Utility functions */
 

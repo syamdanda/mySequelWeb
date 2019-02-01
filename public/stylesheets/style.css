@@ -111,6 +111,7 @@
 
 .success {
     display: none;
+    color: green;
 }
 
 .failure {

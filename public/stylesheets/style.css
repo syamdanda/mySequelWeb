@@ -116,6 +116,7 @@
 
 .failure {
     display: none;
+    color: red;
 }
 
 .warning {

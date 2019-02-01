@@ -42,9 +42,13 @@ function getTableInfo() {
 					hotGrid = new Handsontable(hotElement, hotSettings);
 					$('#msgSpan').addClass('success');
 					$('#msgSpan').html('Table information retrieved successfully.');
-					$("#msgSpan").fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+					$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 				}
 			}
+		} else {
+			$('#msgSpan').addClass('failure');
+			$('#msgSpan').html('Failed to retrieve table information');
+			$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 		}
 	});	
 }
@@ -81,6 +85,9 @@ function submitQuery() {
 								'colHeaders': colHeaders
 							};
 							loadResultsGrid(hotSettings);
+							$('#msgSpan').addClass('success');
+							$('#msgSpan').html('Query executed successfully and no. of records retrieved are: ' + response.result.length);
+							$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 						}
 					}
 				} else {
@@ -104,6 +111,9 @@ function submitQuery() {
 								'colHeaders': colHeaders
 							};
 							loadResultsGrid(hotSettings);
+							$('#msgSpan').addClass('success');
+							$('#msgSpan').html('Query executed successfully, but do not match any records.');
+							$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 						}
 					}
 				}
@@ -128,6 +138,9 @@ function submitQuery() {
 							'colHeaders': colHeaders
 						};
 						loadResultsGrid(hotSettings);
+						$('#msgSpan').addClass('success');
+						$('#msgSpan').html('Query executed successfully.');
+						$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 					}
 				}
 			}
@@ -152,6 +165,9 @@ function submitQuery() {
 						'manualColumnResize': true
 					};
 					loadResultsGrid(hotSettings);
+					$('#msgSpan').addClass('failure');
+					$('#msgSpan').html('Query execution failed, please check the syntax.');
+					$("#msgSpan").fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
 				}
 			}
 		}

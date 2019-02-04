@@ -60,6 +60,7 @@ function loadResultsGrid(hotSettings) {
 
 function submitQuery() {
 	query = $('.queryEditor').html();
+	query.replaceAll('<div>', '').replaceAll('</div>', '').replaceAll('<span>', '').replaceAll('</span>', '');	
 	reqHandler.post({url: '/execute', data: {'query': query }}, function(response) {
 		console.log(JSON.stringify(response, null, 2));
 		if ('SUCCESS' == response.status) {
@@ -330,3 +331,8 @@ function getQuestionMarks(noOfChars) {
 		}
 	}
 }
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};

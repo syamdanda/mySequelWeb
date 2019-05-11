@@ -34,6 +34,9 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+var app_host;
+var app_port;
+
 // error handlers
 
 // development error handler
@@ -46,6 +49,12 @@ if (app.get('env') === 'development') {
             error: err
         });
     });
+    // set app defaults
+    app_host = process.env.HOST || 'localhost';
+    app_port = process.env.PORT || 1234;
+} else {
+    app_host = process.env.HOST;
+    app_port = process.env.PORT;
 }
 
 // production error handler
@@ -58,9 +67,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// set app defaults
-var app_host = process.env.HOST || 'localhost';
-var app_port = process.env.PORT || 1234;
+
 
 // lift the app
 app.listen(app_port, app_host, function (){

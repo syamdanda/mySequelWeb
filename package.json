@@ -3,8 +3,34 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
+  "keywords": [
+      "mysql",
+      "mysqldb",
+      "admin",
+      "web",
+      "ui",
+      "UI",
+      "gui",
+      "GUI",
+      "DB",
+      "database",
+      "user",
+      "manage",
+      "manager",
+      "administer",
+      "interface",
+      "document",
+      "table",
+      "express",
+      "electron",
+      "cross platform",
+      "open source",
+      "mysql-web",
+      "MySequelWeb",
+      "free"
+    ],
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",

@@ -3,7 +3,7 @@ What is this
 
 MySql Web is an open source web based GUI tool to access your MySql database.
 It is similar to PHP My Admin of WAMP. Here you can access any MySQL database with proper connection strings.
-We do not save or store any of your connection strings or data. Every thing related to your conection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
+We do not save or store any of your connection strings or data. Every thing related to your connection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
 
 Demo
 =================

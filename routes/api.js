@@ -1,15 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var mysql = require('mysql');
-var _ = require('underscore');
+const express = require('express');
+const router = express.Router();
+const mysql = require('mysql');
+const { Client } = require('pg');
+const _ = require('underscore');
 var query;
 var config = {
   'host': '',
   'port':  '',
   'user': '',
   'password': '',
-  'database': ''
-}
+  'database': '',
+  'dbServer': ''
+};
 var connection;
 
 
@@ -21,14 +23,23 @@ router.get('/', function(req, res) {
 
 router.post('/home', function(req, res) {
 	config['host'] = req.body['host'];
-	config['port'] = req.body['portNumber'];
+	config['port'] = parseInt(req.body['portNumber']);
 	config.user = req.body.userName;
 	config.password = req.body.password;
 	config.database = req.body.dbName;
-	connection = mysql.createConnection(config);
-	connection.connect();
+	config.dbServer = req.body['dbServer'];
+
+	if ('MySQL' == config.dbServer) {
+		connection = mysql.createConnection(config);
+		query = "SELECT table_name FROM information_schema.tables where table_schema='"+ config.database +"'";
+	} else {
+		connection = new Client(config);
+		query = "SELECT table_name FROM information_schema.tables WHERE table_type='BASE TABLE' AND table_schema='public'";
+	}
+
+	connection.connect();		
 	
-	connection.query("SELECT table_name FROM information_schema.tables where table_schema='"+ config.database +"'", function (error, results, fields) {
+	connection.query(query, function (error, results, fields) {
 	  connection.end();
 	  if (error) {
 	  	console.log('errors exists');
@@ -43,7 +54,7 @@ router.post('/home', function(req, res) {
 	  	var response = {
 	  		'title': 'MySql Web',
 	  		'status': 'SUCCESS',
-	  		'result': results
+	  		'result': 'MySQL' == config.dbServer ? results : results.rows
 	  	};
 	  	res.render('home', response);
 	  }	  

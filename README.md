@@ -3,13 +3,15 @@ What is this
 
 MySql Web is an open source web based GUI tool to access your MySql database.
 It is similar to PHP My Admin of WAMP. Here you can access any MySQL database with proper connection strings.
-We do not save or store any of your connection strings or data. Every thing related to your conection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
+We do not save or store any of your connection strings or data. Every thing related to your connection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
 
 Demo
 =================
 You can access https://mysqlweb.herokuapp.com/ for live demo.
 Run the app.js file from your cmd prompt<br />
-     mySequelWeb>node app.js<br />Then navigate to http://localhost:1234 url by opening your favorite browser.<br /><br />
+     
+     mySequelWeb>node app.js
+Then navigate to http://localhost:1234 url by opening your favorite browser.<br /><br />
       <img src="/screenshots/1.PNG" alt="img 1"/>
       <br/><br/>
   Except autoconnection field all are mandatory. Please provide your conection string details and click on Access Database<br />

@@ -62,9 +62,15 @@ router.post('/home', function(req, res) {
 });
 
 router.get('/tableInfo/:tableName', function(req, res) {
-	connection = mysql.createConnection(config);
+	if ('MySQL' == config.dbServer) {
+		connection = mysql.createConnection(config);
+		query = "SELECT COLUMN_NAME, ORDINAL_POSITION FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + config.database + "' AND TABLE_NAME ='" + req.params.tableName + "'";
+	} else {
+		connection = new Client(config);
+		query = "SELECT COLUMN_NAME  FROM information_schema.columns WHERE  TABLE_NAME ='" + req.params.tableName + "'";
+	}
 	connection.connect();
-	query = "SELECT COLUMN_NAME, ORDINAL_POSITION FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + config.database + "' AND TABLE_NAME ='" + req.params.tableName + "'";
+	
 	console.log('query ::: ', query);
 	connection.query(query, function (error, results, fields) {
 		connection.end();
@@ -81,9 +87,9 @@ router.get('/tableInfo/:tableName', function(req, res) {
 			var response = {
 				'title': 'MySql Web',
 				'status': 'SUCCESS',
-				'result': results
+				'result': 'MySQL' == config.dbServer ? results : results.rows
 			};
-			//console.log(JSON.stringify(results, null, 2));
+			console.log(JSON.stringify(results, null, 2));
 			res.json(response);
 		}	  
 	});

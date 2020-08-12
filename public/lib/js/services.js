@@ -11,7 +11,6 @@ function selectTable(tableName) {
 }
 
 function getTableInfo() {
-
 	reqHandler.get({url: '/tableInfo/' + selectedTable}, function(response) {
 		console.log(JSON.stringify(response, null, 2));
 		if (response && response.result && response.result.length) {
@@ -22,7 +21,7 @@ function getTableInfo() {
 			var hotElement = document.querySelector('#resultsGrid');
 			var lastIndex = response.result.length;
 			for (i=0;i<lastIndex;i++) {
-				var colName =response.result[i].COLUMN_NAME;
+				var colName = response.result[i].COLUMN_NAME || response.result[i].column_name;
 				columnsObject.push({data: colName, type: 'text', className: 'htRight', readOnly: true});
 				colHeaders.push(colName);
 				colWidths.push(colName.length * 11);
@@ -62,7 +61,6 @@ function submitQuery() {
 	query = $('.queryEditor').html();
 	query.replaceAll('<div>', '').replaceAll('</div>', '').replaceAll('<span>', '').replaceAll('</span>', '');	
 	reqHandler.post({url: '/execute', data: {'query': query }}, function(response) {
-		console.log(JSON.stringify(response, null, 2));
 		if ('SUCCESS' == response.status) {
 			if (response.result instanceof Array) {
 				if (response.result && response.result.length) {
@@ -187,7 +185,7 @@ function selectQuery() {
 				var querySnippet = 'SELECT '
 				var lastIndex = response.result.length;
 				for (i=0;i<lastIndex;i++) {
-					var colName =response.result[i].COLUMN_NAME;
+					var colName = response.result[i].COLUMN_NAME || response.result[i].column_name;
 					if (i==0) {
 						querySnippet = querySnippet + ' ' + colName;
 					} else {
@@ -224,7 +222,7 @@ function insertQuery() {
 				var querySnippet = 'INSERT INTO ' + selectedTable + ' (';
 				var lastIndex = response.result.length;
 				for (i=0;i<lastIndex;i++) {
-					var colName =response.result[i].COLUMN_NAME;
+					var colName = response.result[i].COLUMN_NAME || response.result[i].column_name;
 					if (i==0) {
 						querySnippet = querySnippet + ' ' + colName;
 					} else {
@@ -261,7 +259,7 @@ function updateQuery() {
 				var querySnippet = 'UPDATE ' + selectedTable + ' SET ';
 				var lastIndex = response.result.length;
 				for (i=0;i<lastIndex;i++) {
-					var colName =response.result[i].COLUMN_NAME;
+					var colName = response.result[i].COLUMN_NAME || response.result[i].column_name;
 					if (i==0) {
 						querySnippet = querySnippet + ' ' + colName + '=? ';
 					} else {
@@ -296,7 +294,7 @@ function deleteQuery() {
 			console.log(JSON.stringify(response, null, 2));
 			if (response && response.result && response.result.length) {
 				
-				var querySnippet = 'DELETE FROM ' + selectedTable + ' WHERE  ' + response.result[0].COLUMN_NAME + ' = ? ';				
+				var querySnippet = 'DELETE FROM ' + selectedTable + ' WHERE  ' + (response.result[0].COLUMN_NAME || response.result[0].column_name) + ' = ? ';				
 				$('.queryEditor').html(querySnippet);
 				$('#msgSpan').addClass('success');
 				$('#msgSpan').html('insert query snippet placed successfully.');

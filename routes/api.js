@@ -96,7 +96,11 @@ router.get('/tableInfo/:tableName', function(req, res) {
 });
 
 router.post('/execute/', function(req, res) {
-	connection = mysql.createConnection(config);
+	if ('MySQL' == config.dbServer) {
+		connection = mysql.createConnection(config);
+	} else {
+		connection = new Client(config);
+	}
 	connection.connect();
 	var queryObj = req.body;
 	query = queryObj.query.replace(';', '');
@@ -117,7 +121,7 @@ router.post('/execute/', function(req, res) {
 				'title': 'MySql Web',
 				'status': 'SUCCESS',
 				'fields': _.pluck(fields, 'name'),
-				'result': results
+				'result': 'MySQL' == config.dbServer ? results : results.rows
 			};
 			//console.log(JSON.stringify(results, null, 2));
 			res.json(response);

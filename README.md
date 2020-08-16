@@ -1,8 +1,8 @@
 What is this
 =================
 
-MySql Web is an open source web based GUI tool to access your MySql database.
-It is similar to PHP My Admin of WAMP. Here you can access any MySQL database with proper connection strings.
+MySequel Web is an open source web based GUI tool to access your MySql/Postgresql database.
+It is similar to PHP My Admin of WAMP. Here you can access any MySql/Postgresql database with proper connection strings.
 We do not save or store any of your connection strings or data. Every thing related to your connection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
 
 Demo
@@ -27,7 +27,7 @@ Current Version
 Current version is <b>pre-alpha</b>
 This version has basic features like <br/>
 <ul>
-  <li>Connecting with MySql Database</li>
+  <li>Connecting with MySql/Postgresql Database</li>
   <li>Displaying list of tables</li>
   <li>Displaying table information on table name click</li>
   <li>executing all Select, update, Insert and Delete queries including joins</li>

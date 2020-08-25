@@ -3,7 +3,7 @@ What is this
 
 MySequel Web is an open source web based GUI tool to access your MySql/Postgresql database.
 It is similar to PHP My Admin of WAMP. Here you can access any MySql/Postgresql database with proper connection strings.
-We do not save or store any of your connection strings or data. Every thing related to your connection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local
+We do not save or store any of your connection strings or data. Every thing related to your connection strings are volatile. You can host this as a simple nodeJs application on any server or you can simply run this in your local.
 
 Demo
 =================
@@ -19,8 +19,6 @@ Then navigate to http://localhost:1234 url by opening your favorite browser.<br 
     <img src="/screenshots/3.PNG" alt="img 2"/> <br/><br/>
   Write queries in the query editor and click on execute button, your query results will appear in the results grid.<br /><br />
     <img src="/screenshots/2.PNG" alt="img 3"/> <br/><br/>
-
-
 
 Current Version
 =================

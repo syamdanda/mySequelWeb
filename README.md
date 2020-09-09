@@ -1,4 +1,4 @@
-What is this
+What is MySequel Web
 =================
 
 MySequel Web is an open source web based GUI tool to access your MySql/Postgresql database.

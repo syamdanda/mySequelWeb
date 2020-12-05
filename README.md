@@ -7,8 +7,8 @@ We do not save or store any of your connection strings or data. Every thing rela
 
 Demo
 =================
-You can access https://mysqlweb.herokuapp.com/ for live demo.
-Run the app.js file from your cmd prompt<br />
+You can access https://mysqlweb.herokuapp.com/ for live demo. <br/>
+To run the application in your machine, Run the app.js file from your cmd prompt<br />
      
      mySequelWeb>node app.js
 Then navigate to http://localhost:1234 url by opening your favorite browser.<br /><br />

@@ -22,7 +22,7 @@ Then navigate to http://localhost:1234 url by opening your favorite browser.<br 
 
 Current Version
 =================
-Current version is <b>pre-alpha</b>
+Current version is <b>beta</b>
 This version has basic features like <br/>
 <ul>
   <li>Connecting with MySql/Postgresql Database</li>
@@ -34,7 +34,7 @@ This version has basic features like <br/>
 
 Upcoming Version
 =================
-<b>Alpha</b>  release contains below features. <br/>
+<b>1.0.0</b>  release contains below features. <br/>
 <ul>
   <li>In-line edit/update on retrieved records</li>
   <li>adding query snippets for Insert, Update, Select and Delete queries</li>

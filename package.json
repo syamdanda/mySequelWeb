@@ -41,7 +41,7 @@
     "debug": "~3.1.0",
     "ejs": "~2.5.7",
     "ejs-locals": "^1.0.2",
-    "electron": "^9.4.0",
+    "electron": "^13.6.6",
     "express": "~4.16.3",
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
